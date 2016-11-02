@@ -41,6 +41,12 @@
            (access-token (cdr (assoc-string "access_token" response-data))))
       access-token)))
 
+(defun csdn-auth-clear ()
+  "重置Access Token"
+  (setq csdn-auth-password nil
+        csdn-auth-username nil
+        csdn-auth-access-token nil))
+
 (defun csdn-auth-get-access-token ()
   "返回Access Token"
   (or csdn-auth-access-token
