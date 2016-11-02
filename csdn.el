@@ -1,7 +1,13 @@
 (require 'csdn-request)
 
 (defmacro csdn-defun-api (fn url doc &optional required-args-alist optional-args-alist)
-  ""
+  "定义csdn api函数的宏.
+
+FN为定义的函数叫什么名字
+URL表示csdn api url
+DOC表示csdn api的功能说明
+REQUIRED-ARGS-ALIST是必填函数及其说明的alist，其元素格式为 (ARG-NAME . ARG-DESCRIPTION)
+OPTIONAL-ARGS-ALIST是可选函数及其说明的alist，其元素格式为 (ARG-NAME . ARG-DESCRIPTION) "
   (declare (debug t) (indent 1))
   (let* ((get-arg-doc-fn (lambda (arg)
                            (let ((arg-name (format "%s" (car arg)))
