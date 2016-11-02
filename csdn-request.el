@@ -2,6 +2,11 @@
 (require 'request)
 
 (defun csdn-request-response-data (url &rest url-params-plist)
+  "访问csdn api url并返回结果.
+
+URL为csdn api url
+URL-PARAMS-PLIST为传递给URL的参数
+"
   (let* ((access-token (csdn-auth-get-access-token))
          (url-params-to-data-fn (lambda (plist)
                                   "Return an alist of the property-value pairs in PLIST."
@@ -18,7 +23,8 @@
     (request-response-data (request url
                                     :type "POST"
                                     :data data
-                                    :parser #'json-read
+                                    :parser (lambda ()
+                                              (json-read-from-string (decode-coding-string (buffer-string) 'utf-8)))
                                     :sync t))))
 
 (provide 'csdn-request)
