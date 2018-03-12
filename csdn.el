@@ -1,4 +1,41 @@
+;;; csdn.el --- a wrapper of csdn api
+
+;; Copyright (C) 2004-2016 DarkSun <lujun9972@gmail.com>.
+
+;; Author: DarkSun <lujun9972@gmail.com>
+;; Created: 2016-03-24
+;; Version: 0.1
+;; Keywords: convenience
+;; Package-Requires: ((request "0.2.0") (emacs "24.4"))
+;; URL: https://github.com/lujun9972/csdn-api.el
+
+;; This file is NOT part of GNU Emacs.
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Source code
+;;
+;; csdn-api's code can be found here:
+;;   http://github.com/lujun9972/csdn-api.el
+
+;;; Commentary:
+
+;; csdn-api is a wrapper of csdn api
+
 (require 'csdn-request)
+
+;;; Code:
 
 (defmacro csdn-defun-api (fn url doc &optional required-args-alist optional-args-alist)
   "定义csdn api函数的宏.
@@ -7,7 +44,7 @@ FN为定义的函数叫什么名字
 URL表示csdn api url
 DOC表示csdn api的功能说明
 REQUIRED-ARGS-ALIST是必填函数及其说明的alist，其元素格式为 (ARG-NAME . ARG-DESCRIPTION)
-OPTIONAL-ARGS-ALIST是可选函数及其说明的alist，其元素格式为 (ARG-NAME . ARG-DESCRIPTION) "
+OPTIONAL-ARGS-ALIST是可选函数及其说明的alist，其元素格式为 (ARG-NAME . ARG-DESCRIPTION)"
   (declare (debug t) (indent 1))
   (let* ((get-arg-doc-fn (lambda (arg)
                            (let ((arg-name (format "%s" (car arg)))
@@ -193,3 +230,7 @@ OPTIONAL-ARGS-ALIST是可选函数及其说明的alist，其元素格式为 (ARG
                 ((id . "帖子id"))
                 ((page . "当前页码，默认1")
                  (size . "每页条数，默认15")))
+
+(provide 'csdn)
+
+;;; csdn.el ends here
