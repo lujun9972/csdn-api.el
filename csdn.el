@@ -203,7 +203,7 @@ OPTIONAL-ARGS-ALIST是可选函数及其说明的alist，其元素格式为 (ARG
 ;; 论坛接口
 (csdn-defun-api csdn-bbs-get-topics "http://api.csdn.net/bbs/gettopics" "获取板块最新帖子列表"
                  ((froum . "板块别名"))) ;这里居然是froum而不是forum，我也是醉了！！
-(csdn-bbs-get-topics "VB.NET")
+;; (csdn-bbs-get-topics "VB.NET")
 
 (csdn-defun-api csdn-bbs-get-topic-detail  "http://api.csdn.net/bbs/gettopicdetails" "获取帖子详细内容"
                 ((id . "帖子ID")))
