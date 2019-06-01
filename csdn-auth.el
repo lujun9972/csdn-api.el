@@ -27,7 +27,7 @@
 ;;; Source code
 ;;
 ;; csdn-api's code can be found here:
-;;   http://github.com/lujun9972/csdn-api.el
+;;   https://github.com/lujun9972/csdn-api.el
 
 ;;; Commentary:
 
@@ -50,12 +50,12 @@
 (defun csdn-auth-get-username ()
   "返回授权用户的用户名."
   (or csdn-auth-username
-      (setq csdn-auth-username (read-string "请输入登陆用户："))))
+      (read-string "请输入登陆用户：")))
 
 (defun csdn-auth-get-password ()
   "返回授权用户的密码."
   (or csdn-auth-password
-      (setq csdn-auth-password (read-passwd "请输入登陆密码："))))
+      (read-passwd "请输入登陆密码：")))
 
 (defvar csdn-auth-access-token nil)
 
@@ -64,7 +64,7 @@
   (let ((username (or username (csdn-auth-get-username)))
         (password (or password (csdn-auth-get-password)))
         (grant-type "password")
-        (url (format "http://api.csdn.net/oauth2/access_token")))
+        (url (format "https://api.csdn.net/oauth2/access_token")))
     (let* ((response (request url
                               :type "GET"
                               :params `(("client_id" . ,csdn-auth-app-key)
@@ -80,6 +80,7 @@
 
 (defun csdn-auth-clear ()
   "重置Access Token."
+  (interactive)
   (setq csdn-auth-password nil
         csdn-auth-username nil
         csdn-auth-access-token nil))

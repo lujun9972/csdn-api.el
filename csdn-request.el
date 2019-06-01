@@ -27,7 +27,7 @@
 ;;; Source code
 ;;
 ;; csdn-api's code can be found here:
-;;   http://github.com/lujun9972/csdn-api.el
+;;   https://github.com/lujun9972/csdn-api.el
 
 ;;; Commentary:
 
